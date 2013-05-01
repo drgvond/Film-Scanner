@@ -7,15 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8952C13F172D6D6A005562DF /* CHLScannerOptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8952C13E172D6D6A005562DF /* CHLScannerOptionsViewController.m */; };
 		89F566DE172D550300BB2FD5 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89F566DD172D550300BB2FD5 /* Cocoa.framework */; };
 		89F566E8172D550300BB2FD5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 89F566E6172D550300BB2FD5 /* InfoPlist.strings */; };
 		89F566EA172D550300BB2FD5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F566E9172D550300BB2FD5 /* main.m */; };
 		89F566EE172D550300BB2FD5 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 89F566EC172D550300BB2FD5 /* Credits.rtf */; };
 		89F566F1172D550300BB2FD5 /* CHLAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F566F0172D550300BB2FD5 /* CHLAppDelegate.m */; };
 		89F566F4172D550400BB2FD5 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89F566F2172D550400BB2FD5 /* MainMenu.xib */; };
+		89F566FB172D55DF00BB2FD5 /* ImageCaptureCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89F566FA172D55DF00BB2FD5 /* ImageCaptureCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8952C13D172D6D6A005562DF /* CHLScannerOptionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHLScannerOptionsViewController.h; sourceTree = "<group>"; };
+		8952C13E172D6D6A005562DF /* CHLScannerOptionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHLScannerOptionsViewController.m; sourceTree = "<group>"; };
 		89F566DA172D550300BB2FD5 /* Film Scanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Film Scanner.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		89F566DD172D550300BB2FD5 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		89F566E0172D550300BB2FD5 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -29,6 +33,7 @@
 		89F566EF172D550300BB2FD5 /* CHLAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CHLAppDelegate.h; sourceTree = "<group>"; };
 		89F566F0172D550300BB2FD5 /* CHLAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CHLAppDelegate.m; sourceTree = "<group>"; };
 		89F566F3172D550400BB2FD5 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		89F566FA172D55DF00BB2FD5 /* ImageCaptureCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageCaptureCore.framework; path = System/Library/Frameworks/ImageCaptureCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +41,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89F566FB172D55DF00BB2FD5 /* ImageCaptureCore.framework in Frameworks */,
 				89F566DE172D550300BB2FD5 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -46,6 +52,7 @@
 		89F566D1172D550300BB2FD5 = {
 			isa = PBXGroup;
 			children = (
+				89F566FA172D55DF00BB2FD5 /* ImageCaptureCore.framework */,
 				89F566E3172D550300BB2FD5 /* Film Scanner */,
 				89F566DC172D550300BB2FD5 /* Frameworks */,
 				89F566DB172D550300BB2FD5 /* Products */,
@@ -84,6 +91,8 @@
 			children = (
 				89F566EF172D550300BB2FD5 /* CHLAppDelegate.h */,
 				89F566F0172D550300BB2FD5 /* CHLAppDelegate.m */,
+				8952C13D172D6D6A005562DF /* CHLScannerOptionsViewController.h */,
+				8952C13E172D6D6A005562DF /* CHLScannerOptionsViewController.m */,
 				89F566F2172D550400BB2FD5 /* MainMenu.xib */,
 				89F566E4172D550300BB2FD5 /* Supporting Files */,
 			);
@@ -169,6 +178,7 @@
 			files = (
 				89F566EA172D550300BB2FD5 /* main.m in Sources */,
 				89F566F1172D550300BB2FD5 /* CHLAppDelegate.m in Sources */,
+				8952C13F172D6D6A005562DF /* CHLScannerOptionsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,6 +314,7 @@
 				89F566F9172D550400BB2FD5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

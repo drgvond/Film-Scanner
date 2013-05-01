@@ -7,9 +7,15 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import <ImageCaptureCore/ImageCaptureCore.h>
 
-@interface CHLAppDelegate : NSObject <NSApplicationDelegate>
+@interface CHLAppDelegate : NSObject <NSApplicationDelegate, ICDeviceBrowserDelegate, ICScannerDeviceDelegate>
+
+@property (strong, nonatomic) ICDeviceBrowser *scannerBrowser;
+@property (weak) ICScannerDevice *scanner;
 
 @property (assign) IBOutlet NSWindow *window;
+@property (strong) IBOutlet NSPanel *scannerOptionsPanel;
 
+- (IBAction)showHideScannerOptions:(id)sender;
 @end
