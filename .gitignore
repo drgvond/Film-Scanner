@@ -1,0 +1,6 @@
+
+*.xcuserstate
+*.xcuserdatad
+*.xcodeproj/xcuserdata/
+
+Film Scanner.xcodeproj/project.xcworkspace/contents.xcworkspacedata
