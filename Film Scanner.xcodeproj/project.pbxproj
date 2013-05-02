@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0673C8EE1732E15800215AC3 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0673C8ED1732E15800215AC3 /* Quartz.framework */; };
 		8952C13F172D6D6A005562DF /* CHLScannerOptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8952C13E172D6D6A005562DF /* CHLScannerOptionsViewController.m */; };
 		89F566DE172D550300BB2FD5 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89F566DD172D550300BB2FD5 /* Cocoa.framework */; };
 		89F566E8172D550300BB2FD5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 89F566E6172D550300BB2FD5 /* InfoPlist.strings */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0673C8ED1732E15800215AC3 /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
 		8952C13D172D6D6A005562DF /* CHLScannerOptionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHLScannerOptionsViewController.h; sourceTree = "<group>"; };
 		8952C13E172D6D6A005562DF /* CHLScannerOptionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHLScannerOptionsViewController.m; sourceTree = "<group>"; };
 		89F566DA172D550300BB2FD5 /* Film Scanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Film Scanner.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -41,6 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0673C8EE1732E15800215AC3 /* Quartz.framework in Frameworks */,
 				89F566FB172D55DF00BB2FD5 /* ImageCaptureCore.framework in Frameworks */,
 				89F566DE172D550300BB2FD5 /* Cocoa.framework in Frameworks */,
 			);
@@ -52,7 +55,7 @@
 		89F566D1172D550300BB2FD5 = {
 			isa = PBXGroup;
 			children = (
-				89F566FA172D55DF00BB2FD5 /* ImageCaptureCore.framework */,
+				0673C8ED1732E15800215AC3 /* Quartz.framework */,
 				89F566E3172D550300BB2FD5 /* Film Scanner */,
 				89F566DC172D550300BB2FD5 /* Frameworks */,
 				89F566DB172D550300BB2FD5 /* Products */,
@@ -71,6 +74,7 @@
 			isa = PBXGroup;
 			children = (
 				89F566DD172D550300BB2FD5 /* Cocoa.framework */,
+				89F566FA172D55DF00BB2FD5 /* ImageCaptureCore.framework */,
 				89F566DF172D550300BB2FD5 /* Other Frameworks */,
 			);
 			name = Frameworks;
