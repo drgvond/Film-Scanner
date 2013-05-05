@@ -8,6 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import <ImageCaptureCore/ImageCaptureCore.h>
+#import <Quartz/Quartz.h>
 
 @interface CHLAppDelegate : NSObject <NSApplicationDelegate, ICDeviceBrowserDelegate, ICScannerDeviceDelegate>
 
@@ -18,4 +19,5 @@
 @property (strong) IBOutlet NSPanel *scannerOptionsPanel;
 
 - (IBAction)showHideScannerOptions:(id)sender;
+- (IBAction)setFilmType:(id)sender;
 @end

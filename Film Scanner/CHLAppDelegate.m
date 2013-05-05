@@ -16,6 +16,12 @@
     self.scannerBrowser.delegate = self;
     self.scannerBrowser.browsedDeviceTypeMask = ICDeviceTypeMaskScanner | ICDeviceLocationTypeMaskLocal;
     [self.scannerBrowser start];
+    self.scanner = nil;
+}
+
+- (void)applicationWillTerminate:(NSNotification *)notification
+{
+    [self.scanner requestCloseSession];
 }
 
 #pragma mark ICDeviceBrowserDelegate
@@ -24,7 +30,10 @@
 {
     if (device.type & ICDeviceTypeScanner) {
         device.delegate = self;
-        NSLog(@"added scanner %@", device);
+        if (!self.scanner) {
+            self.scanner = (ICScannerDevice *)device;
+            [self.scanner requestOpenSession];
+        }
     }
 }
 
@@ -38,7 +47,8 @@
 
 - (void)didRemoveDevice:(ICDevice*)device
 {
-    self.scanner = nil;
+    if (device == self.scanner)
+        self.scanner = nil;
 }
 
 - (void)device:(ICDevice*)device didOpenSessionWithError:(NSError*)error
@@ -46,15 +56,30 @@
     NSLog(@"session opened %@", error);
 }
 
+- (void)device:(ICDevice*)device didCloseSessionWithError:(NSError*)error
+{
+    NSLog(@"session closed %@", error);
+    if (device == self.scanner)
+        self.scanner = nil;
+}
+
 - (void)deviceDidBecomeReady:(ICDevice*)device
 {
     NSLog(@"scanner ready %@", device);
-    self.scanner = (ICScannerDevice *)device;
+    assert(device == self.scanner);
+//    [self.scanner requestSelectFunctionalUnit:ICScannerFunctionalUnitTypeNegativeTransparency];
+    
+//    NSLog(@"vendor features %@", self.scanner.selectedFunctionalUnit.vendorFeatures);
 }
 
 - (void)device:(ICDevice*)device didReceiveStatusInformation:(NSDictionary*)status
 {
     NSLog(@"status notification %@", status);
+}
+
+- (void)scannerDevice:(ICScannerDevice*)scanner didSelectFunctionalUnit:(ICScannerFunctionalUnit*)functionalUnit error:(NSError*)error
+{
+    NSLog(@"selected functional unit %@", self.scanner.selectedFunctionalUnit);    
 }
 
 
@@ -66,6 +91,17 @@
         [self.scannerOptionsPanel orderOut:self];
     else
         [self.scannerOptionsPanel orderFront:self];
+}
+
+- (IBAction)setFilmType:(id)sender
+{
+    if (!self.scanner)
+        return;
+    
+    ICScannerFunctionalUnitType type = ([sender tag] == 0 || [sender tag] == 1) ?
+        ICScannerFunctionalUnitTypeNegativeTransparency :
+        ICScannerFunctionalUnitTypePositiveTransparency;
+    [self.scanner requestSelectFunctionalUnit:type];
 }
 
 @end
