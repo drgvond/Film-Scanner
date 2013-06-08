@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0673C8EE1732E15800215AC3 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0673C8ED1732E15800215AC3 /* Quartz.framework */; };
-		8952C13F172D6D6A005562DF /* CHLScannerOptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8952C13E172D6D6A005562DF /* CHLScannerOptionsViewController.m */; };
+		8913CCF7175BFF070092C370 /* CHLScannerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8913CCF6175BFF070092C370 /* CHLScannerController.m */; };
 		89F566DE172D550300BB2FD5 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89F566DD172D550300BB2FD5 /* Cocoa.framework */; };
 		89F566E8172D550300BB2FD5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 89F566E6172D550300BB2FD5 /* InfoPlist.strings */; };
 		89F566EA172D550300BB2FD5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F566E9172D550300BB2FD5 /* main.m */; };
@@ -20,8 +20,8 @@
 
 /* Begin PBXFileReference section */
 		0673C8ED1732E15800215AC3 /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
-		8952C13D172D6D6A005562DF /* CHLScannerOptionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHLScannerOptionsViewController.h; sourceTree = "<group>"; };
-		8952C13E172D6D6A005562DF /* CHLScannerOptionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHLScannerOptionsViewController.m; sourceTree = "<group>"; };
+		8913CCF5175BFF070092C370 /* CHLScannerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHLScannerController.h; sourceTree = "<group>"; };
+		8913CCF6175BFF070092C370 /* CHLScannerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHLScannerController.m; sourceTree = "<group>"; };
 		89F566DA172D550300BB2FD5 /* Film Scanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Film Scanner.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		89F566DD172D550300BB2FD5 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		89F566E0172D550300BB2FD5 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -95,8 +95,8 @@
 			children = (
 				89F566EF172D550300BB2FD5 /* CHLAppDelegate.h */,
 				89F566F0172D550300BB2FD5 /* CHLAppDelegate.m */,
-				8952C13D172D6D6A005562DF /* CHLScannerOptionsViewController.h */,
-				8952C13E172D6D6A005562DF /* CHLScannerOptionsViewController.m */,
+				8913CCF5175BFF070092C370 /* CHLScannerController.h */,
+				8913CCF6175BFF070092C370 /* CHLScannerController.m */,
 				89F566F2172D550400BB2FD5 /* MainMenu.xib */,
 				89F566E4172D550300BB2FD5 /* Supporting Files */,
 			);
@@ -182,7 +182,7 @@
 			files = (
 				89F566EA172D550300BB2FD5 /* main.m in Sources */,
 				89F566F1172D550300BB2FD5 /* CHLAppDelegate.m in Sources */,
-				8952C13F172D6D6A005562DF /* CHLScannerOptionsViewController.m in Sources */,
+				8913CCF7175BFF070092C370 /* CHLScannerController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

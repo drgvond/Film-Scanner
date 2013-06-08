@@ -7,101 +7,66 @@
 //
 
 #import "CHLAppDelegate.h"
+#import "CHLScannerController.h"
+
+@interface CHLScannerMenuItem : NSMenuItem
+@property (weak) ICScannerDevice *scanner;
+@end
+
+@implementation CHLScannerMenuItem
+
+- (id)initWithScanner:(ICScannerDevice *)scanner
+{
+    self = [super init];
+    if (self) {
+        self.scanner = scanner;
+        self.title = scanner.name;
+        self.image = [[NSImage alloc] initWithCGImage:scanner.icon size:NSMakeSize(32, 32)];
+        self.target = [NSApp delegate];
+        self.action = @selector(selectScanner:);
+        if (scanner == ((CHLAppDelegate *)[NSApp delegate]).scannerController.scanner)
+            self.state = NSOnState;
+    }
+    return self;
+}
+
+@end
 
 @implementation CHLAppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    self.scannerBrowser = [[ICDeviceBrowser alloc] init];
-    self.scannerBrowser.delegate = self;
-    self.scannerBrowser.browsedDeviceTypeMask = ICDeviceTypeMaskScanner | ICDeviceLocationTypeMaskLocal;
-    [self.scannerBrowser start];
-    self.scanner = nil;
+    self.scannerController = [[CHLScannerController alloc] init];
 }
 
 - (void)applicationWillTerminate:(NSNotification *)notification
 {
-    [self.scanner requestCloseSession];
+    self.scannerController = nil;
 }
 
-#pragma mark ICDeviceBrowserDelegate
-
-- (void)deviceBrowser:(ICDeviceBrowser*)browser didAddDevice:(ICDevice*)device moreComing:(BOOL)moreComing
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
-    if (device.type & ICDeviceTypeScanner) {
-        device.delegate = self;
-        if (!self.scanner) {
-            self.scanner = (ICScannerDevice *)device;
-            [self.scanner requestOpenSession];
+//    if (object == self.scannerController && [keyPath isEqualToString:@"scanners"])
+//        ;
+}
+
+#pragma mask NSMenuDelegate -- Scanner Selection Menu
+
+- (void)selectScanner:(CHLScannerMenuItem *)sender
+{
+    self.scannerController.scanner = sender.scanner;
+}
+
+- (void)menuNeedsUpdate:(NSMenu *)menu
+{
+    if (menu == self.scannersMenu) {
+        [menu removeAllItems];
+        
+        for (ICScannerDevice *scanner in self.scannerController.scanners) {
+            CHLScannerMenuItem *item = [[CHLScannerMenuItem alloc] initWithScanner:scanner];
+            [menu addItem:item];
         }
     }
-}
-
-- (void)deviceBrowser:(ICDeviceBrowser*)browser didRemoveDevice:(ICDevice*)device moreGoing:(BOOL)moreGoing
-{
-    if (device.type & ICDeviceTypeScanner)
-        NSLog(@"removed scanner %@", device);
-}
-
-#pragma mark ICScannerDeviceDelegate
-
-- (void)didRemoveDevice:(ICDevice*)device
-{
-    if (device == self.scanner)
-        self.scanner = nil;
-}
-
-- (void)device:(ICDevice*)device didOpenSessionWithError:(NSError*)error
-{
-    NSLog(@"session opened %@", error);
-}
-
-- (void)device:(ICDevice*)device didCloseSessionWithError:(NSError*)error
-{
-    NSLog(@"session closed %@", error);
-    if (device == self.scanner)
-        self.scanner = nil;
-}
-
-- (void)deviceDidBecomeReady:(ICDevice*)device
-{
-    NSLog(@"scanner ready %@", device);
-    assert(device == self.scanner);
-//    [self.scanner requestSelectFunctionalUnit:ICScannerFunctionalUnitTypeNegativeTransparency];
-    
-//    NSLog(@"vendor features %@", self.scanner.selectedFunctionalUnit.vendorFeatures);
-}
-
-- (void)device:(ICDevice*)device didReceiveStatusInformation:(NSDictionary*)status
-{
-    NSLog(@"status notification %@", status);
-}
-
-- (void)scannerDevice:(ICScannerDevice*)scanner didSelectFunctionalUnit:(ICScannerFunctionalUnit*)functionalUnit error:(NSError*)error
-{
-    NSLog(@"selected functional unit %@", self.scanner.selectedFunctionalUnit);    
-}
-
-
-#pragma mark IBActions
-
-- (IBAction)showHideScannerOptions:(id)sender
-{
-    if (self.scannerOptionsPanel.isVisible)
-        [self.scannerOptionsPanel orderOut:self];
-    else
-        [self.scannerOptionsPanel orderFront:self];
-}
-
-- (IBAction)setFilmType:(id)sender
-{
-    if (!self.scanner)
-        return;
-    
-    ICScannerFunctionalUnitType type = ([sender tag] == 0 || [sender tag] == 1) ?
-        ICScannerFunctionalUnitTypeNegativeTransparency :
-        ICScannerFunctionalUnitTypePositiveTransparency;
-    [self.scanner requestSelectFunctionalUnit:type];
 }
 
 @end
